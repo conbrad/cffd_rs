@@ -70,9 +70,23 @@ mod tests {
         assert_eq!(result, Ok(vec![0.03570253831296717]));
     }
     #[test]
-
     fn basic_single_rso_upper_case() {
         let result = cfb_calc(&[1.0], &[1.0], &[1.0], &[1.0], "RSO");
         assert_eq!(result, Ok(vec![0.03570253831296717]));
+    }
+    #[test]
+    fn basic_multiple_input() {
+        let result = cfb_calc(&[1.0, 1.0], &[1.0, 1.0], &[1.0, 1.0], &[1.0, 1.0], "cfb");
+        assert_eq!(result, Ok(vec![0.23383326388098113, 0.23383326388098113]));
+    }
+    #[test]
+    fn basic_multiple_rso_lower_case() {
+        let result = cfb_calc(&[1.0, 1.0], &[1.0, 1.0], &[1.0, 1.0], &[1.0, 1.0], "rso");
+        assert_eq!(result, Ok(vec![0.03570253831296717, 0.03570253831296717]));
+    }
+    #[test]
+    fn basic_multiple_rso_upper_case() {
+        let result = cfb_calc(&[1.0, 1.0], &[1.0, 1.0], &[1.0, 1.0], &[1.0, 1.0], "RSO");
+        assert_eq!(result, Ok(vec![0.03570253831296717, 0.03570253831296717]));
     }
 }
