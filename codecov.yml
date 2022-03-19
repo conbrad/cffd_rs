@@ -1,2 +1,2 @@
 ignore:
-  - "lib.rs" # FFI wrapper interface
+  - "src/lib.rs" # FFI wrapper interface
