@@ -30,7 +30,7 @@ pub fn cfb_calc(
         .zip(sfc.iter().map(|x| x * 300.0))
         .map(|(x, y)| x / y)
         .collect();
-    if option == "RSO" {
+    if option == "RSO" || option == "rso" {
         return Ok(rso);
     }
 
@@ -63,5 +63,16 @@ mod tests {
     fn basic_error_wrong_lengths() {
         let result = cfb_calc(&[1.0, 1.0], &[1.0], &[1.0], &[1.0], "cfb");
         assert_eq!(result, Err(-1.0));
+    }
+    #[test]
+    fn basic_single_rso_lower_case() {
+        let result = cfb_calc(&[1.0], &[1.0], &[1.0], &[1.0], "rso");
+        assert_eq!(result, Ok(vec![0.03570253831296717]));
+    }
+    #[test]
+
+    fn basic_single_rso_upper_case() {
+        let result = cfb_calc(&[1.0], &[1.0], &[1.0], &[1.0], "RSO");
+        assert_eq!(result, Ok(vec![0.03570253831296717]));
     }
 }
