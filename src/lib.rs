@@ -27,12 +27,3 @@ pub extern "C" fn FIcalc(fc: &[f64], ros: &[f64]) -> Vec<f64> {
     };
     return handled_res;
 }
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        let result = 2 + 2;
-        assert_eq!(result, 4);
-    }
-}
