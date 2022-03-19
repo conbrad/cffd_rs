@@ -50,3 +50,18 @@ pub fn cfb_calc(
 
     return Ok(cfb);
 }
+#[cfg(test)]
+mod tests {
+    use crate::cffdrs::cfb_calc;
+
+    #[test]
+    fn basic_single_input() {
+        let result = cfb_calc(&[1.0], &[1.0], &[1.0], &[1.0], "cfb");
+        assert_eq!(result, Ok(vec![0.23383326388098113]));
+    }
+    #[test]
+    fn basic_error_wrong_lengths() {
+        let result = cfb_calc(&[1.0, 1.0], &[1.0], &[1.0], &[1.0], "cfb");
+        assert_eq!(result, Err(-1.0));
+    }
+}
